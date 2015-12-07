@@ -1,5 +1,5 @@
-import scrapy
-
+﻿import scrapy
+from scrapy.spider import CrawlSpider, Rule
 
 from allforyou_sg.items import AllforyouSgItem
 class AllForYouCrawler(scrapy.Spider):
@@ -15,14 +15,17 @@ class AllForYouCrawler(scrapy.Spider):
             yield scrapy.Request(url, callback=self.parse_dir_contents)
             
     def parse_dir_contents(self,response):
-      
-               
+                
+        
         for lnk in response.xpath('//div[@class="prod-data"]'):
              items = AllforyouSgItem()
              items['title'] = lnk.xpath('@data-name').extract()
              items['price'] = lnk.xpath('@data-price').extract()
              items['sku'] = lnk.xpath('@data-newprodid').extract()
-
+             items['primary_image_url'] = lnk.xpath('@data-imgurl').extract()
+             items['availability'] = lnk.xpath('@data-outofstock').extract()
+             items['oldprice'] = lnk.xpath('@data-oldprice').extract()
+             items['description'] = lnk.xpath('@data-dessc').extract()
              yield items
   
                     

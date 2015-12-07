@@ -13,4 +13,7 @@ class AllforyouSgItem(scrapy.Item):
     # name = scrapy.Field()
     title = scrapy.Field()
     price = scrapy.Field()
+    primary_image_url = scrapy.Field()
+    sku = scrapy.Field()
+    currency = scrapy.Field()
     pass

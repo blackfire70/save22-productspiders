@@ -23,6 +23,8 @@ class Save22ProductspidersItem(scrapy.Item):
     ean = scrapy.Field()
     currency = scrapy.Field()
     price = scrapy.Field()
+    oldprice = scrapy.Field()
+    availability = scrapy.Field()
    
     prmo_price = scrapy.Field()
     
