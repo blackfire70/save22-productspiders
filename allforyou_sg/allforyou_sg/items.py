@@ -16,4 +16,8 @@ class AllforyouSgItem(scrapy.Item):
     primary_image_url = scrapy.Field()
     sku = scrapy.Field()
     currency = scrapy.Field()
+    outOfStock = scrapy.Field()
+    oldprice = scrapy.Field()
+    description = scrapy.Field()
+    crawltime = scrapy.Field()
     pass
