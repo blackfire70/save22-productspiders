@@ -11,7 +11,7 @@ class Afyspider(CrawlSpider):
     start_urls = [
         "https://www.allforyou.sg/"]
     linkss=[]
-    now = datetime.datetime.now()
+    
     rules=[	Rule(LinkExtractor( allow = (r'.+/',),deny =(r'Feedback',r'.+?filter.+',r'.+forum.+',r'.+signin.+','.+blog.+')),callback='parse_grid_contents',follow=True)
       
           
@@ -27,6 +27,7 @@ class Afyspider(CrawlSpider):
             for lnk in response.xpath('//div[@class="prod-data"]'):
                 if lnk.xpath('@data-newprodid'):
                     if lnk.xpath('@data-newprodid').extract() not in self.linkss:
+                         now = datetime.datetime.now()
                          self.linkss.append(lnk.xpath('@data-newprodid').extract())
                          items = AfycrawlItem()
                          items['title'] = lnk.xpath('@data-name').extract()
@@ -36,7 +37,7 @@ class Afyspider(CrawlSpider):
                          items['currency'] = 'SGD'
                          items['outOfStock'] = lnk.xpath('@data-outofstock').extract()
                          items['oldprice'] = lnk.xpath('@data-oldprice').extract()
-                         items['description'] = lnk.xpath('@data-dessc').extract()
-                         items['crawltime'] =self.now.strftime("%Y-%m-%d %H:%M:%S")
+                        
+                         items['crawltime'] =now.strftime("%Y-%m-%d %H:%M:%S")
                          yield items
   

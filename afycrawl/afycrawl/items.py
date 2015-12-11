@@ -16,5 +16,5 @@ class AfycrawlItem(scrapy.Item):
     currency = scrapy.Field()
     outOfStock = scrapy.Field()
     oldprice = scrapy.Field()
-    description = scrapy.Field()
+    
     crawltime = scrapy.Field()
