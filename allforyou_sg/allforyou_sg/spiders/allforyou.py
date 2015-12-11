@@ -33,7 +33,7 @@ class AllForYouCrawler(scrapy.Spider):
                      items['outOfStock'] = lnk.xpath('@data-outofstock').extract()
                      items['oldprice'] = lnk.xpath('@data-oldprice').extract()
                      items['description'] = lnk.xpath('@data-dessc').extract()
-                     items['crawltime'] =self.now.strftime("%Y-%m-%d %H:%M")
+                     items['crawltime'] =self.now.strftime("%Y-%m-%d %H:%M:%S")
                      yield items
   
                     
